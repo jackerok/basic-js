@@ -12,12 +12,22 @@ const { NotImplementedError } = require("../lib");
  *
  */
 function deleteDigit(n) {
-  let max;
-  for(let i =0;i<=)
+  const str = String(n);
+  const isNegative = str[0] === "-";
+  const digits = isNegative ? str.slice(1) : str;
+
+  let max = -Infinity;
+
+  for (let i = 0; i < digits.length; i++) {
+    const candidateDigits = digits.slice(0, i) + digits.slice(i + 1);
+    const candidateStr = isNegative ? `-${candidateDigits}` : candidateDigits;
+    const value = Number(candidateStr);
+    if (value > max) max = value;
+  }
+
+  return max === -Infinity ? 0 : max;
 }
 
-// // Remove line below and write your code here
-//   throw new NotImplementedError('Not implemented');
 module.exports = {
   deleteDigit,
 };
