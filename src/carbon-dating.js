@@ -18,7 +18,6 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(sampleActivity) {
-  // Input validation
   if (typeof sampleActivity !== "string") return false;
 
   const activity = parseFloat(sampleActivity);
